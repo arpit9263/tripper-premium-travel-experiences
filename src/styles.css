@@ -44,7 +44,6 @@
 :root {
   --radius: 0.75rem;
 
-  /* Brand */
   --navy-deep: oklch(0.22 0.08 264);
   --navy: oklch(0.28 0.09 264);
   --orange: oklch(0.7 0.18 48);
@@ -71,7 +70,12 @@
   --input: oklch(0.92 0.015 264);
   --ring: var(--orange);
 
-  --gradient-hero: linear-gradient(135deg, oklch(0.22 0.08 264 / 0.85), oklch(0.28 0.09 264 / 0.55));
+  --gradient-hero: linear-gradient(
+    135deg,
+    oklch(0.22 0.08 264 / 0.85),
+    oklch(0.28 0.09 264 / 0.55)
+  );
+
   --gradient-brand: linear-gradient(135deg, var(--navy-deep), var(--navy));
   --gradient-accent: linear-gradient(135deg, var(--orange), var(--orange-soft));
   --shadow-elegant: 0 24px 60px -24px oklch(0.22 0.08 264 / 0.35);
@@ -79,17 +83,81 @@
 }
 
 @layer base {
-  * { border-color: var(--color-border); }
-  html { scroll-behavior: smooth; }
+  * {
+    border-color: var(--color-border);
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    max-width: 100%;
+    overflow-x: clip;
+  }
+
   body {
+    max-width: 100%;
+    overflow-x: clip;
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
   }
-  h1, h2, h3, h4, h5 {
+
+  #root {
+    max-width: 100%;
+    overflow-x: clip;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
     font-family: var(--font-display);
     letter-spacing: -0.02em;
+  }
+
+  img,
+  video,
+  svg,
+  canvas {
+    max-width: 100%;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
+
+  ::selection {
+    background: var(--orange);
+    color: white;
+  }
+
+  /* Ultra thin premium scrollbar */
+  ::-webkit-scrollbar {
+    width: 3px;
+    height: 3px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(15, 23, 42, 0.25);
+    border-radius: 999px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(15, 23, 42, 0.45);
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(15, 23, 42, 0.25) transparent;
   }
 }
 
@@ -97,8 +165,46 @@
   margin-inline: auto;
   width: 100%;
   max-width: 80rem;
-  padding-inline: 1.25rem;
+  padding-inline: 1rem;
+
+  @media (min-width: 640px) {
+    padding-inline: 1.25rem;
+  }
+
   @media (min-width: 768px) {
     padding-inline: 2rem;
   }
+}
+
+/* Search tabs thin scrollbar */
+.tabs-scroll::-webkit-scrollbar {
+  height: 2px;
+}
+
+.tabs-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.tabs-scroll::-webkit-scrollbar-thumb {
+  background: rgba(37, 99, 235, 0.25);
+  border-radius: 999px;
+}
+
+.tabs-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(37, 99, 235, 0.45);
+}
+
+.tabs-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(37, 99, 235, 0.25) transparent;
+}
+
+/* Hide scrollbar utility */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
