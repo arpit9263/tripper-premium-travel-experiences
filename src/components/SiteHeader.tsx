@@ -18,7 +18,7 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border/40 bg-background/80 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-navy-deep/30 backdrop-blur-xl supports-[backdrop-filter]:bg-navy-deep/20">
       <div className="container-page flex h-18 items-center justify-between gap-6 py-3">
         <Link to="/" className="flex shrink-0 items-center gap-2.5">
           <img src={logo} alt="Tripper" width={40} height={40} className="h-10 w-10 object-contain" />
