@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { PageHero } from "@/components/PageHero";
 import { destinations } from "@/lib/destinations";
-import { DestinationCard } from "./index";
+import { DestinationCard } from "@/components/DestinationCard";
 import hero from "@/assets/dest-paris.jpg";
 
 export const Route = createFileRoute("/destinations")({
