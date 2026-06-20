@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   ArrowRight,
   Plane,
@@ -18,6 +18,9 @@ import {
   Sparkles,
   Star,
   Compass,
+  Search,
+  Clock,
+  Sun,
 } from "lucide-react";
 import heroPoster from "@/assets/hero-lagoon.jpg";
 import { destinations } from "@/lib/destinations";
@@ -42,8 +45,29 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
-const HERO_VIDEO =
-  "https://videos.pexels.com/video-files/3571264/3571264-uhd_3840_2160_30fps.mp4";
+const HERO_SLIDES = [
+  {
+    video:
+      "https://videos.pexels.com/video-files/3571264/3571264-uhd_3840_2160_30fps.mp4",
+    eyebrow: "Tropical Escapes",
+    title: ["Crafted journeys.", "Timeless memories."],
+    sub: "Overwater villas, private lagoons and slow island mornings.",
+  },
+  {
+    video:
+      "https://videos.pexels.com/video-files/2169307/2169307-uhd_3840_2160_30fps.mp4",
+    eyebrow: "Mountain Trails",
+    title: ["Above the clouds,", "into the wild."],
+    sub: "Alpine peaks, hidden valleys and unforgettable summit sunrises.",
+  },
+  {
+    video:
+      "https://videos.pexels.com/video-files/4763824/4763824-uhd_3840_2160_24fps.mp4",
+    eyebrow: "City Lights",
+    title: ["Skylines that", "never sleep."],
+    sub: "Curated city breaks across the world's most iconic capitals.",
+  },
+];
 
 const tabs = [
   { key: "holidays", label: "Holidays", icon: Plane },
@@ -60,50 +84,124 @@ const trustBadges = [
   { icon: Users, label: "Trusted by Millions" },
 ];
 
+const PLACEHOLDERS = [
+  "Dubai",
+  "Bali honeymoon",
+  "Bangkok in May",
+  "Swiss Alps",
+  "Maldives villa",
+  "Paris in spring",
+];
+
+const TRENDING_PACKAGES: Record<string, number> = {
+  greece: 24,
+  japan: 31,
+  swiss: 18,
+  dubai: 42,
+  bali: 36,
+  paris: 27,
+  iceland: 15,
+  maldives: 21,
+};
+
 function Home() {
   const [activeTab, setActiveTab] = useState<(typeof tabs)[number]["key"]>("holidays");
-  const trending = destinations.slice(0, 6);
+  const [slide, setSlide] = useState(0);
+  const [query, setQuery] = useState("");
+  const [phIdx, setPhIdx] = useState(0);
+  const [phText, setPhText] = useState(PLACEHOLDERS[0]);
+  const [phFade, setPhFade] = useState(true);
+
+  // hero slide rotation
+  useEffect(() => {
+    const t = setInterval(() => setSlide((s) => (s + 1) % HERO_SLIDES.length), 7000);
+    return () => clearInterval(t);
+  }, []);
+
+  // animated placeholder
+  useEffect(() => {
+    const t = setInterval(() => {
+      setPhFade(false);
+      setTimeout(() => {
+        setPhIdx((i) => {
+          const next = (i + 1) % PLACEHOLDERS.length;
+          setPhText(PLACEHOLDERS[next]);
+          return next;
+        });
+        setPhFade(true);
+      }, 250);
+    }, 2400);
+    return () => clearInterval(t);
+  }, []);
+
+  const filteredSuggestions = useMemo(() => {
+    if (!query) return [];
+    const q = query.toLowerCase();
+    return destinations
+      .filter((d) => d.name.toLowerCase().includes(q) || d.region.toLowerCase().includes(q))
+      .slice(0, 5);
+  }, [query]);
 
   return (
     <>
-      {/* HERO with video background */}
-      <section className="relative isolate overflow-hidden">
+      {/* HERO with cycling videos */}
+      <section className="relative isolate -mt-20 overflow-hidden">
         <div className="absolute inset-0 -z-20">
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            poster={heroPoster}
-            className="h-full w-full object-cover"
-          >
-            <source src={HERO_VIDEO} type="video/mp4" />
-          </video>
+          {HERO_SLIDES.map((s, i) => (
+            <video
+              key={s.video}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload={i === 0 ? "auto" : "metadata"}
+              poster={heroPoster}
+              className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-[1400ms] ease-out ${
+                i === slide ? "opacity-100 scale-105" : "opacity-0"
+              }`}
+              style={{ transitionProperty: "opacity, transform" }}
+            >
+              <source src={s.video} type="video/mp4" />
+            </video>
+          ))}
         </div>
-        {/* readability overlays */}
-        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-navy-deep/80 via-navy-deep/45 to-transparent" />
-        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-navy-deep/30 via-transparent to-navy-deep/50" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-navy-deep/85 via-navy-deep/50 to-transparent" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-navy-deep/40 via-transparent to-navy-deep/70" />
 
-        <div className="container-page relative flex min-h-[92vh] flex-col justify-center pb-40 pt-20 text-primary-foreground md:pb-48">
-          <span className="inline-flex w-fit items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-orange-soft backdrop-blur">
-            <Sparkles className="h-3.5 w-3.5" /> Explore Beyond Limits
-          </span>
+        <div className="container-page relative flex min-h-[100vh] flex-col justify-center pb-44 pt-32 text-primary-foreground md:pb-52">
+          {HERO_SLIDES.map((s, i) => (
+            <div
+              key={s.eyebrow}
+              className={`transition-all duration-700 ${
+                i === slide
+                  ? "pointer-events-auto translate-y-0 opacity-100"
+                  : "pointer-events-none absolute -z-10 translate-y-4 opacity-0"
+              }`}
+            >
+              {i === slide && (
+                <>
+                  <span className="inline-flex w-fit items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-orange-soft backdrop-blur animate-fade-in">
+                    <Sparkles className="h-3.5 w-3.5" /> {s.eyebrow}
+                  </span>
+                  <h1 className="mt-6 max-w-3xl font-display text-5xl font-bold leading-[1.02] tracking-tight md:text-7xl lg:text-[5.5rem] animate-fade-in">
+                    {s.title[0]}
+                    <br />
+                    <span className="italic text-orange-soft">{s.title[1]}</span>
+                  </h1>
+                  <p className="mt-5 max-w-xl text-lg text-white/85 md:text-xl animate-fade-in">
+                    {s.sub}
+                  </p>
+                </>
+              )}
+            </div>
+          ))}
 
-          <h1 className="mt-6 max-w-3xl font-display text-5xl font-bold leading-[1.02] tracking-tight md:text-7xl lg:text-[5.5rem]">
-            Crafted journeys.
-            <br />
-            <span className="text-orange-soft italic">Timeless memories.</span>
-          </h1>
-
-          <p className="mt-5 max-w-xl text-lg text-white/85 md:text-xl">
-            Personalized holidays. Unforgettable experiences across 140+ destinations.
-          </p>
-
-          {/* trust badges */}
           <div className="mt-8 flex flex-wrap gap-x-7 gap-y-3">
             {trustBadges.map(({ icon: Icon, label }) => (
-              <div key={label} className="flex items-center gap-2 text-sm font-medium text-white/90">
+              <div
+                key={label}
+                className="flex items-center gap-2 text-sm font-medium text-white/90"
+              >
                 <span className="grid h-8 w-8 place-items-center rounded-full bg-white/10 text-orange-soft backdrop-blur">
                   <Icon className="h-4 w-4" />
                 </span>
@@ -111,12 +209,25 @@ function Home() {
               </div>
             ))}
           </div>
+
+          {/* slide dots */}
+          <div className="mt-10 flex gap-2">
+            {HERO_SLIDES.map((_, i) => (
+              <button
+                key={i}
+                aria-label={`Slide ${i + 1}`}
+                onClick={() => setSlide(i)}
+                className={`h-1.5 rounded-full transition-all ${
+                  i === slide ? "w-10 bg-orange" : "w-4 bg-white/40 hover:bg-white/70"
+                }`}
+              />
+            ))}
+          </div>
         </div>
 
-        {/* Search card — overlapping into next section */}
-        <div className="container-page absolute inset-x-0 bottom-0 z-10 translate-y-1/2">
-          <div className="mx-auto max-w-6xl overflow-hidden rounded-2xl bg-white shadow-[0_30px_80px_-20px_rgba(15,23,42,0.4)] ring-1 ring-black/5">
-            {/* Tabs */}
+        {/* Search card overlapping next section */}
+        <div className="container-page absolute inset-x-0 bottom-0 z-20 translate-y-1/2">
+          <div className="mx-auto max-w-6xl overflow-visible rounded-2xl bg-white shadow-[0_30px_80px_-20px_rgba(15,23,42,0.45)] ring-1 ring-black/5">
             <div className="flex flex-wrap gap-1 border-b border-border/60 px-3 pt-3">
               {tabs.map(({ key, label, icon: Icon }) => {
                 const isActive = activeTab === key;
@@ -140,13 +251,44 @@ function Home() {
               })}
             </div>
 
-            {/* Inputs */}
-            <div className="grid gap-3 p-4 md:grid-cols-[1.3fr_1fr_1fr_1fr_auto] md:p-5">
+            <div className="grid gap-3 p-4 md:grid-cols-[1.4fr_1fr_1fr_1fr_auto] md:p-5">
               <Field icon={MapPin} label="Where to?">
-                <input
-                  className="w-full bg-transparent text-sm font-medium text-navy-deep outline-none placeholder:text-muted-foreground"
-                  placeholder="Search destinations"
-                />
+                <div className="relative w-full">
+                  <input
+                    value={query}
+                    onChange={(e) => setQuery(e.target.value)}
+                    className="w-full bg-transparent text-sm font-medium text-navy-deep outline-none placeholder:text-transparent"
+                    placeholder="Search"
+                  />
+                  {!query && (
+                    <span
+                      aria-hidden
+                      className={`pointer-events-none absolute inset-y-0 left-0 flex items-center text-sm font-medium text-muted-foreground transition-all duration-300 ${
+                        phFade ? "translate-y-0 opacity-100" : "-translate-y-1 opacity-0"
+                      }`}
+                    >
+                      Search {phText}
+                    </span>
+                  )}
+                  {filteredSuggestions.length > 0 && (
+                    <div className="absolute left-0 right-0 top-full z-30 mt-3 overflow-hidden rounded-xl border border-border bg-white shadow-[0_20px_50px_-20px_rgba(15,23,42,0.35)]">
+                      {filteredSuggestions.map((d) => (
+                        <Link
+                          key={d.slug}
+                          to="/destinations"
+                          className="flex items-center gap-3 border-b border-border/60 px-4 py-3 last:border-0 hover:bg-secondary"
+                        >
+                          <img src={d.image} alt="" className="h-9 w-9 rounded-md object-cover" />
+                          <div className="flex-1">
+                            <div className="text-sm font-semibold text-navy-deep">{d.name}</div>
+                            <div className="text-[11px] text-muted-foreground">{d.region}</div>
+                          </div>
+                          <span className="text-xs font-semibold text-orange">{d.price}</span>
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
               </Field>
               <Field icon={CalendarDays} label="Check-in">
                 <input
@@ -168,8 +310,9 @@ function Home() {
                   <option>2 Adults, 2 Children</option>
                 </select>
               </Field>
-              <button className="group inline-flex items-center justify-center gap-2 rounded-xl bg-navy-deep px-7 py-4 text-sm font-semibold text-primary-foreground shadow-[var(--shadow-elegant)] transition hover:bg-navy">
-                Search {tabs.find((t) => t.key === activeTab)?.label}
+              <button className="group inline-flex items-center justify-center gap-2 rounded-xl bg-navy-deep px-7 py-4 text-sm font-semibold text-primary-foreground shadow-[var(--shadow-elegant)] transition hover:bg-orange">
+                <Search className="h-4 w-4" />
+                Search
                 <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
               </button>
             </div>
@@ -177,79 +320,11 @@ function Home() {
         </div>
       </section>
 
-      {/* TRENDING DESTINATIONS — mimics reference grid */}
-      <section className="pt-40 md:pt-48">
-        <div className="container-page">
-          <div className="flex flex-wrap items-end justify-between gap-4">
-            <h2 className="font-display text-2xl font-bold text-navy-deep md:text-4xl">
-              Trending Holiday Destinations
-            </h2>
-            <Link
-              to="/destinations"
-              className="inline-flex items-center gap-1.5 text-sm font-semibold text-orange hover:underline"
-            >
-              View all destinations <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
-
-          <div className="relative mt-8">
-            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
-              {trending.map((d) => (
-                <Link
-                  key={d.slug}
-                  to="/destinations"
-                  className="group relative isolate flex aspect-[3/4] flex-col justify-end overflow-hidden rounded-2xl ring-1 ring-black/5"
-                >
-                  <img
-                    src={d.image}
-                    alt={d.name}
-                    loading="lazy"
-                    width={600}
-                    height={800}
-                    className="absolute inset-0 -z-10 h-full w-full object-cover transition duration-700 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 -z-10 bg-gradient-to-t from-navy-deep/85 via-navy-deep/20 to-transparent" />
-                  <div className="p-4 text-primary-foreground">
-                    <div className="font-display text-base font-bold leading-tight">
-                      {d.region}
-                    </div>
-                    <div className="mt-0.5 text-[11px] font-medium text-white/80">
-                      {Math.floor(Math.random() * 40) + 10} Packages
-                    </div>
-                  </div>
-                </Link>
-              ))}
-            </div>
-            {/* arrow controls (decorative) */}
-            <button
-              aria-label="Previous"
-              className="absolute -left-4 top-1/2 hidden h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-white shadow-[var(--shadow-card)] ring-1 ring-black/5 transition hover:bg-orange hover:text-primary-foreground lg:grid"
-            >
-              <ChevronLeft className="h-5 w-5" />
-            </button>
-            <button
-              aria-label="Next"
-              className="absolute -right-4 top-1/2 hidden h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-white shadow-[var(--shadow-card)] ring-1 ring-black/5 transition hover:bg-orange hover:text-primary-foreground lg:grid"
-            >
-              <ChevronRight className="h-5 w-5" />
-            </button>
-          </div>
-
-          <div className="mt-8 flex justify-center gap-1.5">
-            {Array.from({ length: 4 }).map((_, i) => (
-              <span
-                key={i}
-                className={`h-1.5 rounded-full transition ${
-                  i === 0 ? "w-8 bg-navy-deep" : "w-1.5 bg-border"
-                }`}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* TRENDING — autoplay carousel */}
+      <TrendingCarousel />
 
       {/* STATS */}
-      <section className="mt-20 border-y border-border/60 bg-sand">
+      <section className="mt-4 border-y border-border/60 bg-sand">
         <div className="container-page grid grid-cols-2 gap-8 py-10 md:grid-cols-4">
           {[
             ["140+", "Destinations"],
@@ -298,19 +373,19 @@ function Home() {
         </div>
       </section>
 
-      {/* CTA STRIP */}
+      {/* CTA */}
       <section className="relative overflow-hidden bg-navy-deep py-20 text-primary-foreground md:py-28">
         <div className="absolute -right-20 -top-20 h-72 w-72 rounded-full bg-orange/20 blur-3xl" />
         <div className="absolute -bottom-32 -left-20 h-80 w-80 rounded-full bg-orange/10 blur-3xl" />
         <div className="container-page grid items-center gap-10 md:grid-cols-[1.4fr_1fr]">
           <div>
-            <Eyebrow tone="light">Need help choosing?</Eyebrow>
+            <Eyebrow>Need help choosing?</Eyebrow>
             <h2 className="mt-3 font-display text-3xl font-bold md:text-5xl">
               Talk to a travel designer. <span className="text-orange">It's on us.</span>
             </h2>
             <p className="mt-4 max-w-xl text-white/75">
-              Tell us how you like to travel — quiet coastlines, mountain trails, food-led cities — and we'll
-              send three handcrafted itineraries within 24 hours.
+              Tell us how you like to travel — quiet coastlines, mountain trails, food-led cities —
+              and we'll send three handcrafted itineraries within 24 hours.
             </p>
           </div>
           <div className="flex flex-col gap-3 md:items-end">
@@ -349,7 +424,9 @@ function Home() {
                     <Star key={i} className="h-4 w-4 fill-current" />
                   ))}
                 </div>
-                <blockquote className="mt-4 text-sm leading-relaxed text-foreground/80">"{t.body}"</blockquote>
+                <blockquote className="mt-4 text-sm leading-relaxed text-foreground/80">
+                  "{t.body}"
+                </blockquote>
                 <figcaption className="mt-5 text-sm">
                   <div className="font-semibold text-navy-deep">{t.name}</div>
                   <div className="text-xs text-muted-foreground">{t.trip}</div>
@@ -360,6 +437,141 @@ function Home() {
         </div>
       </section>
     </>
+  );
+}
+
+function TrendingCarousel() {
+  const scrollerRef = useRef<HTMLDivElement>(null);
+  const [paused, setPaused] = useState(false);
+
+  // autoplay
+  useEffect(() => {
+    if (paused) return;
+    const el = scrollerRef.current;
+    if (!el) return;
+    const t = setInterval(() => {
+      if (!el) return;
+      const cardWidth = el.firstElementChild
+        ? (el.firstElementChild as HTMLElement).offsetWidth + 16
+        : 280;
+      const atEnd = el.scrollLeft + el.clientWidth >= el.scrollWidth - 4;
+      el.scrollTo({
+        left: atEnd ? 0 : el.scrollLeft + cardWidth,
+        behavior: "smooth",
+      });
+    }, 3500);
+    return () => clearInterval(t);
+  }, [paused]);
+
+  const scroll = (dir: -1 | 1) => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    const w = el.firstElementChild
+      ? (el.firstElementChild as HTMLElement).offsetWidth + 16
+      : 280;
+    el.scrollBy({ left: dir * w * 2, behavior: "smooth" });
+  };
+
+  return (
+    <section className="pt-40 md:pt-48">
+      <div className="container-page">
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <Eyebrow>Bestsellers</Eyebrow>
+            <h2 className="mt-2 font-display text-3xl font-bold text-navy-deep md:text-5xl">
+              Trending Holiday Destinations
+            </h2>
+          </div>
+          <div className="flex items-center gap-3">
+            <Link
+              to="/destinations"
+              className="inline-flex items-center gap-1.5 text-sm font-semibold text-orange hover:underline"
+            >
+              View all <ArrowRight className="h-4 w-4" />
+            </Link>
+            <div className="flex gap-2">
+              <button
+                aria-label="Previous"
+                onClick={() => scroll(-1)}
+                className="grid h-10 w-10 place-items-center rounded-full border border-border bg-white text-navy-deep transition hover:bg-navy-deep hover:text-primary-foreground"
+              >
+                <ChevronLeft className="h-5 w-5" />
+              </button>
+              <button
+                aria-label="Next"
+                onClick={() => scroll(1)}
+                className="grid h-10 w-10 place-items-center rounded-full border border-border bg-white text-navy-deep transition hover:bg-navy-deep hover:text-primary-foreground"
+              >
+                <ChevronRight className="h-5 w-5" />
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div
+          ref={scrollerRef}
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+          className="mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth pb-4 [&::-webkit-scrollbar]:hidden"
+          style={{ scrollbarWidth: "none" }}
+        >
+          {destinations.map((d) => (
+            <Link
+              key={d.slug}
+              to="/destinations"
+              className="group relative isolate flex aspect-[3/4] w-[78%] shrink-0 snap-start flex-col justify-end overflow-hidden rounded-2xl ring-1 ring-black/5 sm:w-[44%] lg:w-[19%]"
+            >
+              <img
+                src={d.image}
+                alt={d.name}
+                loading="lazy"
+                width={600}
+                height={800}
+                className="absolute inset-0 -z-10 h-full w-full object-cover transition duration-700 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 -z-10 bg-gradient-to-t from-navy-deep/95 via-navy-deep/35 to-transparent transition-opacity duration-500 group-hover:from-navy-deep" />
+              <span className="absolute right-3 top-3 rounded-full bg-orange px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest text-accent-foreground">
+                {d.tag}
+              </span>
+              <div className="p-4 text-primary-foreground">
+                <div className="text-[10px] font-semibold uppercase tracking-widest text-white/75">
+                  {d.region}
+                </div>
+                <div className="mt-1 font-display text-lg font-bold leading-tight">
+                  {d.name}
+                </div>
+                <div className="mt-1 text-[11px] font-medium text-white/80">
+                  {TRENDING_PACKAGES[d.slug] ?? 12} Packages
+                </div>
+
+                {/* Hover-reveal detail */}
+                <div className="grid grid-rows-[0fr] transition-all duration-500 group-hover:grid-rows-[1fr] group-hover:mt-3">
+                  <div className="overflow-hidden">
+                    <div className="flex items-center gap-3 text-[11px] text-white/85">
+                      <span className="inline-flex items-center gap-1">
+                        <Clock className="h-3 w-3" /> {d.days}
+                      </span>
+                      <span className="inline-flex items-center gap-1">
+                        <Sun className="h-3 w-3" /> Year-round
+                      </span>
+                    </div>
+                    <div className="mt-2 flex items-center justify-between">
+                      <span className="text-[11px] text-white/70">Starting from</span>
+                      <span className="font-display text-sm font-bold text-orange-soft">
+                        {d.price}
+                      </span>
+                    </div>
+                    <span className="mt-3 inline-flex items-center gap-1 text-[11px] font-semibold text-orange">
+                      Explore <ArrowRight className="h-3 w-3" />
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -385,13 +597,9 @@ function Field({
   );
 }
 
-function Eyebrow({ children, tone = "dark" }: { children: React.ReactNode; tone?: "dark" | "light" }) {
+function Eyebrow({ children }: { children: React.ReactNode }) {
   return (
-    <span
-      className={`inline-block text-xs font-bold uppercase tracking-[0.22em] ${
-        tone === "light" ? "text-orange" : "text-orange"
-      }`}
-    >
+    <span className="inline-block text-xs font-bold uppercase tracking-[0.22em] text-orange">
       {children}
     </span>
   );
