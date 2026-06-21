@@ -110,37 +110,9 @@ export default function PremiumTravelHeroVideo() {
                 <div className="absolute inset-0 bg-gradient-to-t from-[#03101d]/60 via-transparent to-black/10" />
             </div>
 
-            {/* Header */}
-            <header className="relative z-30 flex items-center justify-between px-6 py-6 lg:px-14">
-                <div className="flex items-center gap-3 text-2xl font-black">
-                    <span className="grid h-11 w-11 place-items-center rounded-full bg-orange-400 shadow-lg">
-                        🦊
-                    </span>
-                    TRIPPPER
-                </div>
+            {/* Spacer for fixed SiteHeader (utility bar + nav) */}
+            <div className="h-24 md:h-28" aria-hidden />
 
-                <nav className="hidden items-center gap-12 text-sm font-semibold text-white/80 md:flex">
-                    <a href="#" className="hover:text-white">
-                        Home
-                    </a>
-                    <a href="#" className="hover:text-white">
-                        Destinations
-                    </a>
-                    <a href="#" className="hover:text-white">
-                        Blog
-                    </a>
-                    <a href="#" className="hover:text-white">
-                        Contact
-                    </a>
-                </nav>
-
-                <div className="hidden items-center gap-5 md:flex">
-                    <div className="grid h-10 w-10 place-items-center rounded-full bg-white text-slate-900">
-                        <UserRound size={18} />
-                    </div>
-                    <span className="font-bold">Hello, Aviany !</span>
-                </div>
-            </header>
 
             {/* Main Content */}
             <div className="relative z-10 mx-auto flex min-h-[calc(100vh-96px)] max-w-[1600px] flex-col items-center justify-between gap-10 px-6 pb-20 lg:flex-row lg:px-16">
