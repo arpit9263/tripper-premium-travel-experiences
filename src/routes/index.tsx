@@ -23,7 +23,6 @@ import {
   Sun,
   UsersRound,
 } from "lucide-react";
-import heroPoster from "@/assets/dest-iceland.jpg";
 import { destinations } from "@/lib/destinations";
 import { TravelSpecialsSection } from "@/components/TravelSpecialsSection";
 import { HotelStaysSection } from "@/components/HotelStaysSection";
