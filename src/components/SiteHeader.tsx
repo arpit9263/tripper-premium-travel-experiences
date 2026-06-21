@@ -119,7 +119,7 @@ export function SiteHeader() {
 
           {/* Desktop nav */}
           <nav className="hidden items-center gap-1 lg:flex">
-            <NavLink to="/" solid={solid}>Home</NavLink>
+            {/* <NavLink to="/" solid={solid}>Home</NavLink> */}
 
             {/* Holidays mega */}
             <MegaTrigger
