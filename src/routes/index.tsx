@@ -28,10 +28,7 @@ import { destinations } from "@/lib/destinations";
 import { TravelSpecialsSection } from "@/components/TravelSpecialsSection";
 import { HotelStaysSection } from "@/components/HotelStaysSection";
 
-import video1 from "@/assets/videos/roadclip.mp4";
-import video2 from "@/assets/videos/bnr-video.mp4";
-import video3 from "@/assets/videos/seaclip.mp4";
-import video4 from "@/assets/videos/skydivingclip.mp4";
+
 import TravelHeroSlider from "@/components/TravelHeroSlider";
 
 export const Route = createFileRoute("/")({
@@ -56,21 +53,21 @@ export const Route = createFileRoute("/")({
 
 const HERO_SLIDES = [
   {
-    video: video2,
+    video: '',
     // "https://videos.pexels.com/video-files/4763824/4763824-uhd_3840_2160_24fps.mp4",
     eyebrow: "City Lights",
     title: ["Skylines that", "never sleep."],
     sub: "Curated city breaks across the world's most iconic capitals.",
   },
   {
-    video: video3,
+    video: '',
     // "https://videos.pexels.com/video-files/3571264/3571264-uhd_3840_2160_30fps.mp4",
     eyebrow: "Tropical Escapes",
     title: ["Crafted journeys.", "Timeless memories."],
     sub: "Overwater villas, private lagoons and slow island mornings.",
   },
   {
-    video: video1,
+    video: '',
     eyebrow: "Luxury Escapes",
     title: ["Discover the world,", "one journey at a time."],
     sub: "Handpicked destinations, premium stays and unforgettable experiences.",
