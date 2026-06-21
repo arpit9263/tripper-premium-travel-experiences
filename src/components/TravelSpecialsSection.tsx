@@ -49,7 +49,7 @@ const topPickSlides = [
 
 const festiveSlides = [
   {
-    title: "Durga Puja Special",
+    title: "Diwali Special",
     subtitle: "Celebrate traditions with a premium festive holiday",
     price: "₹ 1,10,900",
     video:

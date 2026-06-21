@@ -28,6 +28,12 @@ import { destinations } from "@/lib/destinations";
 import { TravelSpecialsSection } from "@/components/TravelSpecialsSection";
 import { HotelStaysSection } from "@/components/HotelStaysSection";
 
+import video1 from "@/assets/videos/roadclip.mp4";
+import video2 from "@/assets/videos/bnr-video.mp4";
+import video3 from "@/assets/videos/seaclip.mp4";
+import video4 from "@/assets/videos/skydivingclip.mp4";
+import TravelHeroSlider from "@/components/TravelHeroSlider";
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -50,26 +56,26 @@ export const Route = createFileRoute("/")({
 
 const HERO_SLIDES = [
   {
-    video:
-      "https://videos.pexels.com/video-files/4763824/4763824-uhd_3840_2160_24fps.mp4",
+    video: video2,
+    // "https://videos.pexels.com/video-files/4763824/4763824-uhd_3840_2160_24fps.mp4",
     eyebrow: "City Lights",
     title: ["Skylines that", "never sleep."],
     sub: "Curated city breaks across the world's most iconic capitals.",
   },
   {
-    video:
-      "https://videos.pexels.com/video-files/3571264/3571264-uhd_3840_2160_30fps.mp4",
+    video: video3,
+    // "https://videos.pexels.com/video-files/3571264/3571264-uhd_3840_2160_30fps.mp4",
     eyebrow: "Tropical Escapes",
     title: ["Crafted journeys.", "Timeless memories."],
     sub: "Overwater villas, private lagoons and slow island mornings.",
   },
   {
-    video: "https://videos.pexels.com/video-files/5532762/5532762-hd_1920_1080_25fps.mp4",
+    video: video1,
     eyebrow: "Luxury Escapes",
     title: ["Discover the world,", "one journey at a time."],
     sub: "Handpicked destinations, premium stays and unforgettable experiences.",
   },
-  
+
 
 ];
 
@@ -148,202 +154,12 @@ function Home() {
 
   return (
     <>
-      <section className="relative isolate ">
-        {/* Background videos */}
-        <div className="absolute inset-0 -z-20 overflow-hidden">
-          {HERO_SLIDES.map((s, i) => (
-            <video
-              key={s.video}
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload={i === 0 ? "auto" : "metadata"}
-              poster={heroPoster}
-              className={`absolute inset-0 h-full w-full object-cover transition-all duration-[1400ms] ease-out ${i === slide ? "scale-105 opacity-100" : "scale-100 opacity-0"
-                }`}
-            >
-              <source src={s.video} type="video/mp4" />
-            </video>
-          ))}
-        </div>
+      <TravelHeroSlider />
 
-        {/* Overlays */}
-        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-navy-deep/90 via-navy-deep/45 to-transparent" />
-        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-white/10 via-transparent to-navy-deep/65" />
-
-        {/* Hero Content */}
-        <div className="container-page relative flex min-h-[92vh] flex-col justify-center pb-36 pt-36 text-primary-foreground sm:min-h-screen sm:pb-52 sm:pt-44">
-          {HERO_SLIDES.map((s, i) => (
-            <div
-              key={s.eyebrow}
-              className={`transition-all duration-700 ${i === slide
-                ? "pointer-events-auto relative z-10 translate-y-0 opacity-100"
-                : "pointer-events-none absolute -z-10 translate-y-4 opacity-0"
-                }`}
-            >
-              {i === slide && (
-                <>
-                  <span className="inline-flex w-fit items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.22em] text-orange-soft backdrop-blur">
-                    <Sparkles className="h-3.5 w-3.5" />
-                    {s.eyebrow}
-                  </span>
-
-                  <h1 className="mt-6 max-w-4xl font-display text-4xl font-bold leading-[1.04] tracking-tight sm:text-5xl md:text-7xl lg:text-[4.5rem]">
-                    {s.title[0]}
-                    <br />
-                    <span className="italic text-orange-soft">{s.title[1]}</span>
-                  </h1>
-
-                  <p className="mt-5 max-w-xl text-base font-medium text-white/85 sm:text-lg md:text-xl">
-                    {s.sub}
-                  </p>
-                </>
-              )}
-            </div>
-          ))}
-
-          {/* Slide dots */}
-          <div className="mt-9 flex gap-2">
-            {HERO_SLIDES.map((_, i) => (
-              <button
-                key={i}
-                aria-label={`Slide ${i + 1}`}
-                onClick={() => setSlide(i)}
-                className={`h-1.5 rounded-full transition-all ${i === slide
-                  ? "w-10 bg-orange"
-                  : "w-4 bg-white/40 hover:bg-white/70"
-                  }`}
-              />
-            ))}
-          </div>
-        </div>
-
-        {/* Search Card */}
-        <div className="relative z-30 mx-auto w-full max-w-6xl px-4 pb-8 sm:absolute sm:bottom-0 sm:left-1/2 sm:-translate-x-1/2 sm:translate-y-1/2 sm:pb-0">
-          <div className="overflow-visible rounded-2xl bg-white shadow-[0_24px_70px_-24px_rgba(15,23,42,0.45)] ring-1 ring-black/5">
-            {/* Tabs */}
-            <div className="tabs-scroll flex gap-1 overflow-x-auto border-b border-slate-200 px-2 pt-2">
-              {tabs.map(({ key, label, icon: Icon }) => {
-                const isActive = activeTab === key;
-
-                return (
-                  <button
-                    key={key}
-                    onClick={() => setActiveTab(key)}
-                    className={`relative flex shrink-0 items-center gap-2 rounded-t-xl px-4 py-3 text-sm font-bold transition-all sm:px-5 ${isActive
-                      ? "bg-white text-blue-600"
-                      : "text-slate-500 hover:bg-slate-50 hover:text-navy-deep"
-                      }`}
-                  >
-                    <span
-                      className={`grid h-6 w-6 place-items-center rounded-md ${isActive
-                        ? "bg-blue-50 text-blue-600"
-                        : "bg-slate-100 text-slate-400"
-                        }`}
-                    >
-                      <Icon className="h-4 w-4" />
-                    </span>
-
-                    {label}
-
-                    {isActive && (
-                      <span className="absolute inset-x-3 -bottom-px h-0.5 rounded-full bg-blue-600" />
-                    )}
-                  </button>
-                );
-              })}
-            </div>
-
-            {/* Fields */}
-            <div className="grid gap-3 p-4 sm:p-5 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr_auto]">
-              <Field icon={MapPin} label="Where to?">
-                <div className="relative w-full">
-                  <input
-                    value={query}
-                    onChange={(e) => setQuery(e.target.value)}
-                    className="w-full bg-transparent text-sm font-semibold text-navy-deep outline-none placeholder:text-transparent"
-                    placeholder="Search destinations"
-                  />
-
-                  {!query && (
-                    <span
-                      aria-hidden
-                      className={`pointer-events-none absolute inset-y-0 left-0 flex items-center text-sm font-medium text-slate-400 transition-all duration-300 ${phFade ? "translate-y-0 opacity-100" : "-translate-y-1 opacity-0"
-                        }`}
-                    >
-                      Search {phText}
-                    </span>
-                  )}
-
-                  {filteredSuggestions.length > 0 && (
-                    <div className="absolute left-0 right-0 top-full z-50 mt-3 max-h-72 overflow-y-auto rounded-xl border border-slate-200 bg-white shadow-xl">
-                      {filteredSuggestions.map((d) => (
-                        <Link
-                          key={d.slug}
-                          to="/destinations"
-                          className="flex items-center gap-3 border-b border-slate-100 px-4 py-3 last:border-0 hover:bg-slate-50"
-                        >
-                          <img
-                            src={d.image}
-                            alt=""
-                            className="h-10 w-10 rounded-lg object-cover"
-                          />
-
-                          <div className="min-w-0 flex-1">
-                            <div className="truncate text-sm font-bold text-navy-deep">
-                              {d.name}
-                            </div>
-                            <div className="truncate text-xs text-slate-500">
-                              {d.region}
-                            </div>
-                          </div>
-
-                          <span className="shrink-0 text-xs font-bold text-orange">
-                            {d.price}
-                          </span>
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </Field>
-
-              <Field icon={CalendarDays} label="Check-in">
-                <input
-                  type="date"
-                  className="w-full bg-transparent text-sm font-semibold text-navy-deep outline-none"
-                />
-              </Field>
-
-              <Field icon={CalendarDays} label="Check-out">
-                <input
-                  type="date"
-                  className="w-full bg-transparent text-sm font-semibold text-navy-deep outline-none"
-                />
-              </Field>
-
-              <Field icon={UsersRound} label="Travelers">
-                <select className="w-full bg-transparent text-sm font-semibold text-navy-deep outline-none">
-                  <option>2 Adults, 1 Child</option>
-                  <option>1 Adult</option>
-                  <option>2 Adults</option>
-                  <option>2 Adults, 2 Children</option>
-                </select>
-              </Field>
-
-              <button className="group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-navy-deep px-7 py-4 text-sm font-bold text-white shadow-lg transition hover:bg-blue-700 md:col-span-2 lg:col-span-1">
-                <Search className="h-4 w-4" />
-                Search Holidays
-                <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* TRENDING — autoplay carousel */}
       <TrendingCarousel />
+
 
 
       {/* TravelSpecialsSection */}

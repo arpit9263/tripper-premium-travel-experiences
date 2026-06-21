@@ -44,11 +44,21 @@
 :root {
   --radius: 0.75rem;
 
-  --navy-deep: oklch(0.22 0.08 264);
-  --navy: oklch(0.28 0.09 264);
+  /* --navy-deep: oklch(0.22 0.08 264); */
+   --navy-deep: #293681;
+
+  /* --navy: oklch(0.28 0.09 264); */
+  --navy:oklch(0.7 0.18 48);
+
   --orange: oklch(0.7 0.18 48);
+  /* --orange: #293681; */
+
   --orange-soft: oklch(0.82 0.12 55);
+  --orange-soft:oklch(0.7 0.18 48);
+
   --sand: oklch(0.97 0.015 70);
+  --sand: oklch(0.97 0.015 70);
+
 
   --background: oklch(0.995 0.003 80);
   --foreground: oklch(0.22 0.05 264);
