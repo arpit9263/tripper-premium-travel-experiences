@@ -5,7 +5,7 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
-import logo from "@/assets/Trippper-logo.png";
+import logo from "@/assets/trippper-logo.png";
 
 export function SiteFooter() {
   const [email, setEmail] = useState("");

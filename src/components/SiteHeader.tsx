@@ -21,7 +21,7 @@ import {
   Compass,
   MapPin,
 } from "lucide-react";
-import logo from "@/assets/Trippper-logo.png";
+import logo from "@/assets/trippper-logo.png";
 import { domestic, international } from "@/lib/destinations";
 
 const HOLIDAY_THEMES = [
