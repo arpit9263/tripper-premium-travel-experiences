@@ -11,9 +11,9 @@ import hero from "@/assets/dest-greece.jpg";
 export const Route = createFileRoute("/services")({
   head: () => ({
     meta: [
-      { title: "Travel Services — Tripper" },
+      { title: "Travel Services — Trippper" },
       { name: "description", content: "Holiday packages, custom itineraries, group tours, honeymoon planning, visa support, travel insurance and 24/7 on-trip concierge." },
-      { property: "og:title", content: "Travel Services — Tripper" },
+      { property: "og:title", content: "Travel Services — Trippper" },
       { property: "og:description", content: "Holiday packages, custom itineraries, group tours, visa, insurance and concierge." },
       { property: "og:url", content: "/services" },
     ],

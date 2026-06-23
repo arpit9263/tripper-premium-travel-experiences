@@ -12,9 +12,9 @@ import hero from "@/assets/dest-iceland.jpg";
 export const Route = createFileRoute("/packages")({
   head: () => ({
     meta: [
-      { title: "Holiday Packages — Tripper" },
+      { title: "Holiday Packages — Trippper" },
       { name: "description", content: "Curated holiday packages with flights, stays, transfers and experiences. Best-selling itineraries across India and 140+ countries." },
-      { property: "og:title", content: "Holiday Packages — Tripper" },
+      { property: "og:title", content: "Holiday Packages — Trippper" },
       { property: "og:description", content: "Curated holiday packages — handpicked by travel designers." },
       { property: "og:url", content: "/packages" },
     ],

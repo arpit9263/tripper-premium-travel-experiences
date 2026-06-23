@@ -10,9 +10,9 @@ import hero from "@/assets/dest-greece.jpg";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact Tripper — Plan Your Next Journey" },
-      { name: "description", content: "Talk to a Tripper travel designer. We'll send three handcrafted itineraries within 24 hours. Offices in Mumbai, Delhi & Bengaluru." },
-      { property: "og:title", content: "Contact Tripper" },
+      { title: "Contact Trippper — Plan Your Next Journey" },
+      { name: "description", content: "Talk to a Trippper travel designer. We'll send three handcrafted itineraries within 24 hours. Offices in Mumbai, Delhi & Bengaluru." },
+      { property: "og:title", content: "Contact Trippper" },
       { property: "og:description", content: "Talk to a travel designer — three itineraries in 24 hours." },
       { property: "og:url", content: "/contact" },
     ],
@@ -58,7 +58,7 @@ function Contact() {
             </div>
             {[
               { icon: Phone, t: "Call", b: "+91 98765 43210", href: "tel:+919876543210" },
-              { icon: Mail, t: "Email", b: "hello@tripper.com", href: "mailto:hello@tripper.com" },
+              { icon: Mail, t: "Email", b: "hello@Trippper.com", href: "mailto:hello@Trippper.com" },
               { icon: MessageCircle, t: "WhatsApp", b: "+91 98765 43210", href: "https://wa.me/919876543210" },
             ].map(({ icon: Icon, t, b, href }) => (
               <a key={t} href={href} className="flex items-start gap-4 rounded-2xl border border-border/60 bg-card p-5 shadow-[var(--shadow-card)] transition hover:-translate-y-0.5 hover:border-orange/40">

@@ -135,14 +135,14 @@ export const blogPosts: BlogPost[] = [
 
 export const testimonials = [
   { name: "Ananya & Rohit", trip: "Maldives Honeymoon, 2025", quote: "From the welcome call to the seaplane transfer, every detail was anticipated. Best decision of our wedding year.", rating: 5 },
-  { name: "The Sharma Family", trip: "Switzerland, 2024", quote: "Travelling with two kids and grandparents is hard. Tripper made it feel like a holiday for all four generations.", rating: 5 },
+  { name: "The Sharma Family", trip: "Switzerland, 2024", quote: "Travelling with two kids and grandparents is hard. Trippper made it feel like a holiday for all four generations.", rating: 5 },
   { name: "Meera Krishnan", trip: "Solo Japan, 2025", quote: "Solo travel in Kyoto felt safe and deeply personal. The tea ceremony alone was worth the trip.", rating: 5 },
   { name: "Vikram Iyer", trip: "Iceland Aurora, 2025", quote: "They moved my entire itinerary by a day when the aurora forecast shifted. Saw the lights on night one.", rating: 5 },
   { name: "Priya & Arjun", trip: "Bali, 2026", quote: "The private villa, the surprise birthday cake, the local guide in Ubud — every single thing landed.", rating: 5 },
 ];
 
 export const faqs = [
-  { q: "How do I book a holiday with Tripper?", a: "Browse our packages or tell us your dream destination. A travel designer will send three handcrafted itineraries within 24 hours. Pay a 20% advance to confirm, balance closer to departure." },
+  { q: "How do I book a holiday with Trippper?", a: "Browse our packages or tell us your dream destination. A travel designer will send three handcrafted itineraries within 24 hours. Pay a 20% advance to confirm, balance closer to departure." },
   { q: "Can I customize a fixed-departure package?", a: "Absolutely. Every itinerary is a starting point. Add nights, change hotels, swap experiences — your designer will rebuild the trip around what you want." },
   { q: "What is your cancellation policy?", a: "Cancellations 45+ days before departure receive a full refund minus a 10% service fee. Inside 45 days, the policy depends on hotel and flight terms — we always pass through actual costs only." },
   { q: "Do you handle visas and travel insurance?", a: "Yes. Visa assistance and travel insurance are included in most international packages and can be added to any custom trip." },

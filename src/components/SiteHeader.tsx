@@ -21,7 +21,7 @@ import {
   Compass,
   MapPin,
 } from "lucide-react";
-import logo from "@/assets/tripper-logo.png";
+import logo from "@/assets/Trippper-logo.png";
 import { domestic, international } from "@/lib/destinations";
 
 const HOLIDAY_THEMES = [
@@ -77,8 +77,8 @@ export function SiteHeader() {
             <a href="tel:+919876543210" className="flex items-center gap-1.5 hover:text-orange">
               <Phone className="h-3 w-3" /> +91 98765 43210
             </a>
-            <a href="mailto:hello@tripper.com" className="flex items-center gap-1.5 hover:text-orange">
-              <Mail className="h-3 w-3" /> hello@tripper.com
+            <a href="mailto:hello@Trippper.com" className="flex items-center gap-1.5 hover:text-orange">
+              <Mail className="h-3 w-3" /> hello@Trippper.com
             </a>
           </div>
           <div className="flex items-center gap-5">
@@ -104,13 +104,13 @@ export function SiteHeader() {
           <Link to="/" className="flex items-center gap-2.5">
             <img
               src={logo}
-              alt="Tripper"
+              alt="Trippper"
               width={40}
               height={40}
               className={`h-9 w-9 object-contain transition md:h-10 md:w-10 ${solid ? "" : "brightness-200"}`}
             />
             <div className="leading-none">
-              <div className="font-display text-lg font-extrabold tracking-tight md:text-xl">Tripper</div>
+              <div className="font-display text-lg font-extrabold tracking-tight md:text-xl">Trippper</div>
               <div className={`mt-0.5 text-[9px] font-semibold uppercase tracking-[0.22em] ${solid ? "text-orange" : "text-orange"}`}>
                 Explore Beyond Limits
               </div>
@@ -253,8 +253,8 @@ export function SiteHeader() {
           <aside className="absolute right-0 top-0 h-full w-[88%] max-w-sm overflow-y-auto bg-background p-6 shadow-2xl">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <img src={logo} alt="Tripper" className="h-9 w-9 object-contain" />
-                <div className="font-display text-lg font-bold text-navy-deep">Tripper</div>
+                <img src={logo} alt="Trippper" className="h-9 w-9 object-contain" />
+                <div className="font-display text-lg font-bold text-navy-deep">Trippper</div>
               </div>
               <button onClick={() => setMobileOpen(false)} className="grid h-9 w-9 place-items-center rounded-full bg-muted">
                 <X className="h-4 w-4" />
@@ -304,7 +304,7 @@ export function SiteHeader() {
             </Link>
             <div className="mt-6 space-y-2 text-sm text-muted-foreground">
               <a href="tel:+919876543210" className="flex items-center gap-2"><Phone className="h-4 w-4 text-orange" /> +91 98765 43210</a>
-              <a href="mailto:hello@tripper.com" className="flex items-center gap-2"><Mail className="h-4 w-4 text-orange" /> hello@tripper.com</a>
+              <a href="mailto:hello@Trippper.com" className="flex items-center gap-2"><Mail className="h-4 w-4 text-orange" /> hello@Trippper.com</a>
             </div>
           </aside>
         </div>

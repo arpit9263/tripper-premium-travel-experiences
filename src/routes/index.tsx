@@ -22,9 +22,9 @@ import { toast } from "sonner";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Tripper — Premium Holiday Packages, India & 140+ Countries" },
+      { title: "Trippper — Premium Holiday Packages, India & 140+ Countries" },
       { name: "description", content: "Curated holiday packages, fixed departures and customisable trips. Domestic India & international holidays designed by 80+ travel experts." },
-      { property: "og:title", content: "Tripper — Crafted Journeys. Timeless Memories." },
+      { property: "og:title", content: "Trippper — Crafted Journeys. Timeless Memories." },
       { property: "og:description", content: "Personalised holiday packages across India and 140+ countries." },
       { property: "og:url", content: "/" },
     ],
@@ -199,11 +199,11 @@ function Home() {
         </div>
       </section>
 
-      {/* ===== WHY TRIPPER ===== */}
+      {/* ===== WHY Trippper ===== */}
       <section className="bg-navy-deep py-20 text-white md:py-28">
         <div className="container-page">
           <div className="max-w-2xl">
-            <Eyebrow>Why Tripper</Eyebrow>
+            <Eyebrow>Why Trippper</Eyebrow>
             <h2 className="mt-3 font-display text-3xl font-bold md:text-5xl">
               Premium travel, end to end.
             </h2>

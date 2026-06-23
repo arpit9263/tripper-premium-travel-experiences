@@ -5,7 +5,7 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
-import logo from "@/assets/tripper-logo.png";
+import logo from "@/assets/Trippper-logo.png";
 
 export function SiteFooter() {
   const [email, setEmail] = useState("");
@@ -44,9 +44,9 @@ export function SiteFooter() {
         {/* Brand */}
         <div className="lg:col-span-2">
           <div className="flex items-center gap-2.5">
-            <img src={logo} alt="Tripper" width={44} height={44} className="h-11 w-11 object-contain brightness-200" />
+            <img src={logo} alt="Trippper" width={44} height={44} className="h-11 w-11 object-contain brightness-200" />
             <div>
-              <div className="font-display text-xl font-extrabold">Tripper</div>
+              <div className="font-display text-xl font-extrabold">Trippper</div>
               <div className="text-[10px] uppercase tracking-[0.22em] text-orange">Explore Beyond Limits</div>
             </div>
           </div>
@@ -55,7 +55,7 @@ export function SiteFooter() {
           </p>
           <div className="mt-6 space-y-2.5 text-sm text-white/75">
             <a href="tel:+919876543210" className="flex items-start gap-3 hover:text-orange"><Phone className="mt-0.5 h-4 w-4 text-orange" /> +91 98765 43210</a>
-            <a href="mailto:hello@tripper.com" className="flex items-start gap-3 hover:text-orange"><Mail className="mt-0.5 h-4 w-4 text-orange" /> hello@tripper.com</a>
+            <a href="mailto:hello@Trippper.com" className="flex items-start gap-3 hover:text-orange"><Mail className="mt-0.5 h-4 w-4 text-orange" /> hello@Trippper.com</a>
             <div className="flex items-start gap-3"><MapPin className="mt-0.5 h-4 w-4 text-orange" /> 142 Marine Drive, Mumbai 400020, India</div>
           </div>
           <div className="mt-6 flex gap-3">
@@ -134,7 +134,7 @@ export function SiteFooter() {
 
       <div className="border-t border-white/10">
         <div className="container-page flex flex-col items-center justify-between gap-3 py-5 text-xs text-white/55 md:flex-row">
-          <p>© {new Date().getFullYear()} Tripper Holidays Pvt. Ltd. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Trippper Holidays Pvt. Ltd. All rights reserved.</p>
           <div className="flex gap-5">
             <Link to="/contact" className="hover:text-orange">Privacy</Link>
             <Link to="/contact" className="hover:text-orange">Terms</Link>

@@ -1,4 +1,4 @@
-## Tripper — Final Premium Upgrade Plan
+## Trippper — Final Premium Upgrade Plan
 
 A full audit + rebuild of everything below the "Explore Hotel Stays" section, plus header, footer, and all inner pages. The top of the homepage (hero → Hotel Stays) stays as the quality benchmark.
 
@@ -19,7 +19,7 @@ Replace current basic blocks with:
 1. **Upcoming Trips / Fixed Departures** — premium cards with: package title, route, departure date, duration, price, seats-left progress bar, "Book Seat" + "Customize Trip" CTAs. Filter chips (This Month / Next Month / Weekend).
 2. **Domestic & International Holidays** — two-column showcase with tabs (Domestic India ↔ International). Each tab: scalable destination grid + "View all" link to `/destinations?region=...`.
 3. **Holiday Themes** — bento grid: Honeymoon, Family, Adventure, Luxury, Group, Pilgrimage, Beach, Snow.
-4. **Why Tripper** — 6 trust pillars with icons + numbers (15K+ travelers, 120+ destinations, 4.9★ rating, 24/7 support, best price, expert curation).
+4. **Why Trippper** — 6 trust pillars with icons + numbers (15K+ travelers, 120+ destinations, 4.9★ rating, 24/7 support, best price, expert curation).
 5. **How It Works** — 4-step horizontal timeline: Discover → Customize → Book → Travel.
 6. **Testimonials** — carousel with avatars, ratings, trip taken, quote.
 7. **Travel Blog Preview** — 3 latest articles linking to `/blog`.
@@ -72,7 +72,7 @@ Each page: PageHero, breadcrumbs, multiple sections, FAQ where relevant, testimo
 - All routes get proper `head()` meta (title, description, og:*)
 - Mobile responsiveness verified at 375 / 768 / 1280  
   
- Holiday Packages are the primary business focus of Tripper. The website should clearly reflect this positioning.
+ Holiday Packages are the primary business focus of Trippper. The website should clearly reflect this positioning.
   - Flights, Hotels, Visa Services, Insurance, and other travel services should only appear as future-ready placeholders and should not dominate the user experience.
   - The design quality, spacing, typography, animations, and visual consistency of all sections below "Explore Hotel Stays" must match the premium standard established by the sections above it.
   - Every page, component, route, button, filter, CTA, and navigation item must feel complete, interconnected, and production-ready. No placeholders, unfinished sections, or dead-end experiences should remain.

@@ -15,9 +15,9 @@ const IMAGES = destinations.flatMap((d, i) => ([
 export const Route = createFileRoute("/gallery")({
   head: () => ({
     meta: [
-      { title: "Gallery — Tripper Travel Photography" },
+      { title: "Gallery — Trippper Travel Photography" },
       { name: "description", content: "A visual journal from our travelers across India and 140+ countries. Beaches, mountains, cities and cultural moments." },
-      { property: "og:title", content: "Travel Gallery — Tripper" },
+      { property: "og:title", content: "Travel Gallery — Trippper" },
       { property: "og:description", content: "A visual journal across 140+ countries." },
       { property: "og:url", content: "/gallery" },
     ],
@@ -38,7 +38,7 @@ function Gallery() {
       <PageHero
         eyebrow="Gallery"
         title={<>Postcards from <span className="italic text-orange">the road</span></>}
-        description="A visual journal from Tripper travelers. Click any image to view full size."
+        description="A visual journal from Trippper travelers. Click any image to view full size."
         image={hero}
         height="sm"
       />

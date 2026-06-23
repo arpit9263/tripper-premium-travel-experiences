@@ -10,9 +10,9 @@ import hero from "@/assets/dest-paris.jpg";
 export const Route = createFileRoute("/destinations")({
   head: () => ({
     meta: [
-      { title: "Holiday Destinations — Tripper" },
+      { title: "Holiday Destinations — Trippper" },
       { name: "description", content: "Explore handpicked holiday destinations across India and 140+ countries. Filter by region, theme, duration and budget." },
-      { property: "og:title", content: "Holiday Destinations — Tripper" },
+      { property: "og:title", content: "Holiday Destinations — Trippper" },
       { property: "og:description", content: "Explore handpicked holiday destinations across 140+ countries." },
       { property: "og:url", content: "/destinations" },
     ],

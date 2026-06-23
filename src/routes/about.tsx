@@ -7,9 +7,9 @@ import hero from "@/assets/dest-swiss.jpg";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About Tripper — Travel Designers Since 2007" },
-      { name: "description", content: "Eighteen years, 50,000+ travelers, 140+ countries. Meet the 80+ travel designers crafting once-in-a-lifetime journeys at Tripper." },
-      { property: "og:title", content: "About Tripper" },
+      { title: "About Trippper — Travel Designers Since 2007" },
+      { name: "description", content: "Eighteen years, 50,000+ travelers, 140+ countries. Meet the 80+ travel designers crafting once-in-a-lifetime journeys at Trippper." },
+      { property: "og:title", content: "About Trippper" },
       { property: "og:description", content: "Travel designers since 2007 — crafting journeys for curious travelers." },
       { property: "og:url", content: "/about" },
     ],
@@ -46,7 +46,7 @@ function About() {
       <PageHero
         eyebrow="Our Story"
         title={<>Built by travelers, <span className="italic text-orange">for travelers</span></>}
-        description="Since 2007, Tripper has designed over 80,000 journeys across 140+ countries — guided by one belief: a trip should change how you see the world."
+        description="Since 2007, Trippper has designed over 80,000 journeys across 140+ countries — guided by one belief: a trip should change how you see the world."
         image={hero}
       />
 

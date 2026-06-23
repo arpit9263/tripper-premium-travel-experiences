@@ -11,9 +11,9 @@ const CATEGORIES = ["All", "Guides", "Itineraries", "Tips", "Experiences"] as co
 export const Route = createFileRoute("/blog")({
   head: () => ({
     meta: [
-      { title: "Travel Stories & Guides — Tripper Blog" },
-      { name: "description", content: "Curated travel guides, itineraries and insider tips from Tripper's travel designers across India and 140+ countries." },
-      { property: "og:title", content: "Travel Stories — Tripper Blog" },
+      { title: "Travel Stories & Guides — Trippper Blog" },
+      { name: "description", content: "Curated travel guides, itineraries and insider tips from Trippper's travel designers across India and 140+ countries." },
+      { property: "og:title", content: "Travel Stories — Trippper Blog" },
       { property: "og:description", content: "Curated travel guides, itineraries and insider tips." },
       { property: "og:url", content: "/blog" },
     ],

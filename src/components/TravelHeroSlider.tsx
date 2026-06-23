@@ -11,6 +11,26 @@ import {
     UserRound,
 } from "lucide-react";
 
+// images
+import dubaiImg from "@/assets/dubai.png";
+import cambodiaImg from "@/assets/cambodiya.png";
+import baliImg from "@/assets/bali.png";
+import shrilankaImg from "@/assets/shrilanka.png";
+import indonesiaImg from "@/assets/indonesia.png";
+import thailandImg from "@/assets/thailand.png";
+import maldivesImg from "@/assets/maldives.png";
+import vietnamImg from "@/assets/vietnam.png";
+
+
+import bali from "@/assets/videos/bali.mp4";
+import cambodia from "@/assets/videos/kambodiya.mp4";
+import dubai from "@/assets/videos/dubai.mp4";
+import shrilanka from "@/assets/videos/shrilanka.mp4";
+import maldives from "@/assets/videos/maldives.mp4";
+import vietnam from "@/assets/videos/vietnam.mp4";
+import thailand from "@/assets/videos/thailand.mp4";
+import indonesia from "@/assets/videos/indonesia.mp4";
+
 const SLIDE_TIME = 5200;
 
 const slides = [
@@ -18,38 +38,64 @@ const slides = [
         title: "INDONESIA",
         place: "Mount Bromo, Indonesia",
         desc: "Explore tropical islands, ancient temples, turquoise beaches, and unforgettable adventures.",
-        video:
-            "https://videos.pexels.com/video-files/3571264/3571264-uhd_3840_2160_30fps.mp4",
-        card:
-            "https://images.unsplash.com/photo-1537953773345-d172ccf13cf1?q=80&w=900&auto=format&fit=crop",
+        video:indonesia,
+        card:indonesiaImg,
     },
     {
         title: "BALI",
         place: "Broken Beach, Bali",
         desc: "Feel the ocean breeze, cliffside views, luxury stays, and island life at its finest.",
-        video:
-            "https://videos.pexels.com/video-files/2169880/2169880-uhd_2560_1440_30fps.mp4",
-        card:
-            "https://images.unsplash.com/photo-1573790387438-4da905039392?q=80&w=900&auto=format&fit=crop",
+        video:bali,
+        card:baliImg,
     },
     {
         title: "THAILAND",
         place: "Buddha Temple, Thailand",
         desc: "A peaceful journey through golden temples, floating markets, beaches, and culture.",
-        video:
-            "https://videos.pexels.com/video-files/3015510/3015510-uhd_2560_1440_24fps.mp4",
-        card:
-            "https://images.unsplash.com/photo-1528181304800-259b08848526?q=80&w=900&auto=format&fit=crop",
+        video:thailand,
+        card:thailandImg,
     },
-    {
-        title: "MALDIVES",
-        place: "Luxury Island, Maldives",
-        desc: "Crystal lagoons, private villas, peaceful beaches, and premium tropical escapes.",
-        video:
-            "https://videos.pexels.com/video-files/3327962/3327962-uhd_2560_1440_24fps.mp4",
-        card:
-            "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?q=80&w=900&auto=format&fit=crop",
-    },
+   {
+    title: "MALDIVES",
+    place: "North Male Atoll, Maldives",
+    desc: "Discover turquoise waters, private island resorts, vibrant coral reefs, and breathtaking sunsets.",
+    video:maldives,
+    card:maldivesImg,
+  },
+
+  {
+    title: "VIETNAM",
+    place: "Ha Long Bay, Vietnam",
+    desc: "Cruise through emerald waters, limestone islands, vibrant cities, and rich cultural heritage.",
+    video:vietnam,
+    card:vietnamImg,
+  },
+
+  {
+    title: "DUBAI",
+    place: "Downtown Dubai, UAE",
+    desc: "Experience futuristic skylines, luxury shopping, desert adventures, and world-class attractions.",
+    video:dubai,
+  
+    card:dubaiImg,
+  },
+
+  {
+    title: "CAMBODIA",
+    place: "Angkor Wat, Cambodia",
+    desc: "Explore ancient temples, fascinating history, authentic culture, and breathtaking landscapes.",
+    video:cambodia,
+    card:cambodiaImg,
+  },
+
+  {
+    title: "SRI LANKA",
+    place: "Sigiriya, Sri Lanka",
+    desc: "Discover lush tea plantations, golden beaches, wildlife safaris, and timeless island beauty.",
+    video:shrilanka,    
+  
+    card:shrilankaImg,
+  },
 ];
 
 export default function PremiumTravelHeroVideo() {
@@ -220,7 +266,7 @@ export default function PremiumTravelHeroVideo() {
 
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
 
-                                    <div className="absolute left-5 right-5 top-5">
+                                    {/* <div className="absolute left-5 right-5 top-5">
                                         <h3 className="text-xl font-black">{slide.place}</h3>
 
                                         <div className="mt-3 flex gap-1">
@@ -232,11 +278,11 @@ export default function PremiumTravelHeroVideo() {
                                                 />
                                             ))}
                                         </div>
-                                    </div>
+                                    </div> */}
 
-                                    <div className="absolute right-5 top-16 grid h-14 w-14 place-items-center rounded-full bg-white text-slate-900 shadow-xl">
+                                    {/* <div className="absolute right-5 top-16 grid h-14 w-14 place-items-center rounded-full bg-white text-slate-900 shadow-xl">
                                         <Heart className="fill-pink-500 text-pink-500" size={22} />
-                                    </div>
+                                    </div> */}
 
                                     <motion.div
                                         animate={{
@@ -249,6 +295,18 @@ export default function PremiumTravelHeroVideo() {
                                         }}
                                         className="absolute bottom-7 left-5 right-5"
                                     >
+                                          <h3 className="text-xl font-black">{slide.place}</h3>
+
+                                        {/* <div className="mt-3 flex gap-1">
+                                            {Array.from({ length: 5 }).map((_, i) => (
+                                                <Star
+                                                    key={i}
+                                                    size={15}
+                                                    className="fill-yellow-400 transition group-hover:scale-110"
+                                                />
+                                            ))}
+                                        </div> */}
+
                                         <p className="line-clamp-4 text-sm leading-relaxed text-white/80">
                                             {slide.desc}
                                         </p>
