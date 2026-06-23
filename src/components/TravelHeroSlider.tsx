@@ -22,15 +22,6 @@ import maldivesImg from "@/assets/maldives.png";
 import vietnamImg from "@/assets/vietnam.png";
 
 
-import bali from "@/assets/videos/bali.mp4";
-import cambodia from "@/assets/videos/kambodiya.mp4";
-import dubai from "@/assets/videos/dubai.mp4";
-import shrilanka from "@/assets/videos/shrilanka.mp4";
-import maldives from "@/assets/videos/maldives.mp4";
-import vietnam from "@/assets/videos/vietnam.mp4";
-import thailand from "@/assets/videos/thailand.mp4";
-import indonesia from "@/assets/videos/indonesia.mp4";
-
 const SLIDE_TIME = 5200;
 
 const slides = [
@@ -38,28 +29,28 @@ const slides = [
         title: "INDONESIA",
         place: "Mount Bromo, Indonesia",
         desc: "Explore tropical islands, ancient temples, turquoise beaches, and unforgettable adventures.",
-        video:indonesia,
+        video:'https://res.cloudinary.com/dusq7ltk1/video/upload/v1782214183/indonesia_eyog4d.mp4',
         card:indonesiaImg,
     },
     {
         title: "BALI",
         place: "Broken Beach, Bali",
         desc: "Feel the ocean breeze, cliffside views, luxury stays, and island life at its finest.",
-        video:bali,
+        video:'https://res.cloudinary.com/dusq7ltk1/video/upload/v1782213829/bali_papbbf.mp4',
         card:baliImg,
     },
     {
         title: "THAILAND",
         place: "Buddha Temple, Thailand",
         desc: "A peaceful journey through golden temples, floating markets, beaches, and culture.",
-        video:thailand,
+        video:'https://res.cloudinary.com/dusq7ltk1/video/upload/v1782214194/thailand_vzwdtw.mp4',
         card:thailandImg,
     },
    {
     title: "MALDIVES",
     place: "North Male Atoll, Maldives",
     desc: "Discover turquoise waters, private island resorts, vibrant coral reefs, and breathtaking sunsets.",
-    video:maldives,
+    video:'https://res.cloudinary.com/dusq7ltk1/video/upload/v1782214162/maldives_sdzj25.mp4',
     card:maldivesImg,
   },
 
@@ -67,7 +58,7 @@ const slides = [
     title: "VIETNAM",
     place: "Ha Long Bay, Vietnam",
     desc: "Cruise through emerald waters, limestone islands, vibrant cities, and rich cultural heritage.",
-    video:vietnam,
+    video:'https://res.cloudinary.com/dusq7ltk1/video/upload/v1782214194/vietnam_z7kit4.mp4',
     card:vietnamImg,
   },
 
@@ -75,7 +66,7 @@ const slides = [
     title: "DUBAI",
     place: "Downtown Dubai, UAE",
     desc: "Experience futuristic skylines, luxury shopping, desert adventures, and world-class attractions.",
-    video:dubai,
+    video:'https://res.cloudinary.com/dusq7ltk1/video/upload/v1782214163/dubai_xirvtx.mp4',
   
     card:dubaiImg,
   },
@@ -84,7 +75,7 @@ const slides = [
     title: "CAMBODIA",
     place: "Angkor Wat, Cambodia",
     desc: "Explore ancient temples, fascinating history, authentic culture, and breathtaking landscapes.",
-    video:cambodia,
+    video:'https://res.cloudinary.com/dusq7ltk1/video/upload/v1782214152/kambodiya_hqssnl.mp4',
     card:cambodiaImg,
   },
 
@@ -92,7 +83,7 @@ const slides = [
     title: "SRI LANKA",
     place: "Sigiriya, Sri Lanka",
     desc: "Discover lush tea plantations, golden beaches, wildlife safaris, and timeless island beauty.",
-    video:shrilanka,    
+    video:'https://res.cloudinary.com/dusq7ltk1/video/upload/v1782214160/shrilanka_rixirp.mp4',    
   
     card:shrilankaImg,
   },
